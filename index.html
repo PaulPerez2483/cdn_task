@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		/>
+		<script src="build.js" defer></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Acme CDN's</h1>
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a
+					class="nav-link active"
+					id="products-tab"
+					data-toggle="tab"
+					href="#products"
+					role="tab"
+					aria-controls="home"
+					aria-selected="true"
+					>Products</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					id="companies-tab"
+					data-toggle="tab"
+					href="#companies"
+					role="tab"
+					aria-controls="profile"
+					aria-selected="false"
+					>Companies</a
+				>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div
+				class="tab-pane fade show active"
+				id="products_"
+				role="tabpanel"
+				aria-labelledby="products-tab"
+			>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">NAME</th>
+							<th scope="col">DESCRIPTION</th>
+							<th scope="col">SUGGESTEDPRICE</th>
+							<th scope="col">CREATEDAT</th>
+							<th scope="col">UPDATEDAT</th>
+						</tr>
+					</thead>
+					<tbody id="products"></tbody>
+				</table>
+			</div>
+			<div
+				class="tab-pane fade"
+				id="companies_"
+				role="tabpanel"
+				aria-labelledby="companies-tab"
+			>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">NAME</th>
+							<th scope="col">PHONE</th>
+							<th scope="col">STATE</th>
+							<th scope="col">CATCHPHRASE</th>
+							<th scope="col">CREATEDAT</th>
+							<th scope="col">UPDATEDAT</th>
+						</tr>
+					</thead>
+					<tbody id="company"></tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
