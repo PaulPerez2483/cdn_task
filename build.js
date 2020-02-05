@@ -45,8 +45,6 @@ const renderProducts = () => {
 	});
 };
 
-renderProducts()
-
 const renderCompanies = () => {
 	tabCompanies.classList.add('show')
 	tabCompanies.classList.add('active')
@@ -75,9 +73,14 @@ const renderCompanies = () => {
 	});
 };
 
+window.location.hash.slice(1) === 'products' ? renderProducts() : renderCompanies(); 
 
 window.addEventListener("hashchange", () => {
 	let hash = window.location.hash.slice(1);
-	 hash === "companies" ? renderCompanies() : renderProducts();
+	 if(hash === "companies") {
+		renderCompanies()
+	 }else{
+		renderProducts();
+	 } 
 });
 
