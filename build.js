@@ -2,8 +2,10 @@ const apiCompanies = "https://acme-users-api-rev.herokuapp.com/api/companies";
 const apiProducts = "https://acme-users-api-rev.herokuapp.com/api/products";
 const productsID = document.getElementById("products");
 const companiesID = document.querySelector("#company");
-console.log(companiesID);
-console.log(productsID);
+let tabProducts = document.getElementById('products_');
+let tabCompanies = document.getElementById('companies_');
+// console.log(companiesID);
+// console.log(productsID);
 let companies = axios.get(apiCompanies);
 let products = axios.get(apiProducts);
 
@@ -14,6 +16,10 @@ let data = Promise.all([companies, products]).then((response) => {
 });
 
 const renderProducts = () => {
+	tabCompanies.classList.remove('show')
+	tabCompanies.classList.remove('active')
+	tabProducts.classList.add('show');
+	tabProducts.classList.add('active')
 	data.then((response) => {
 		let prHtml = response[1]
 			.map((product) => {
@@ -34,9 +40,15 @@ const renderProducts = () => {
 	});
 };
 
+renderProducts()
+
 const renderCompanies = () => {
+	tabCompanies.classList.add('show')
+	tabCompanies.classList.add('active')
+	tabProducts.classList.remove('show');
+	tabProducts.classList.remove('active')
 	data.then((response) => {
-		console.log(response[0]);
+		// console.log(response[0]);
 		let coHtml = response[0]
 			.map((company) => {
 				// console.log(product);
@@ -51,20 +63,14 @@ const renderCompanies = () => {
           </tr>`;
 			})
 			.join("");
-		console.log(coHtml);
+		// console.log(coHtml);
 		companiesID.innerHTML = coHtml;
 	});
 };
 
+
 window.addEventListener("hashchange", () => {
 	let hash = window.location.hash.slice(1);
-	console.log(hash === "companies");
-	if (hash === "companies") {
-		console.log(hash);
-		renderCompanies();
-		return;
-	} else {
-		renderProducts();
-		return;
-	}
+	 hash === "companies" ? renderCompanies() : renderProducts();
 });
+
