@@ -4,6 +4,8 @@ const productsID = document.getElementById("products");
 const companiesID = document.querySelector("#company");
 let tabProducts = document.getElementById('products_');
 let tabCompanies = document.getElementById('companies_');
+let productsActive = document.getElementById('products-tab');
+let companyActive = document.getElementById('companies-tab');
 // console.log(companiesID);
 // console.log(productsID);
 let companies = axios.get(apiCompanies);
@@ -16,10 +18,13 @@ let data = Promise.all([companies, products]).then((response) => {
 });
 
 const renderProducts = () => {
+	productsActive.classList.add('active');
+	companyActive.classList.remove('active');
 	tabCompanies.classList.remove('show')
 	tabCompanies.classList.remove('active')
 	tabProducts.classList.add('show');
 	tabProducts.classList.add('active')
+
 	data.then((response) => {
 		let prHtml = response[1]
 			.map((product) => {
@@ -46,7 +51,9 @@ const renderCompanies = () => {
 	tabCompanies.classList.add('show')
 	tabCompanies.classList.add('active')
 	tabProducts.classList.remove('show');
-	tabProducts.classList.remove('active')
+	tabProducts.classList.remove('active');
+	productsActive.classList.remove('active');
+	companyActive.classList.add('active');
 	data.then((response) => {
 		// console.log(response[0]);
 		let coHtml = response[0]
